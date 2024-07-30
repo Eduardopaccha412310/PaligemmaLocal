@@ -1,0 +1,257 @@
+<!DOCTYPE HTML>
+<html lang="es">
+<head>
+    <title>Descripción de Documentos</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/main.css') }}">
+    <style>
+        /* Estilo del cuerpo y contenedor principal */
+        html, body, .page-wrap {
+            height: 100%;
+            margin: 0;
+        }
+
+        /* Estructura de contenedor principal */
+        .page-wrap {
+            display: flex;
+            flex-direction: row;
+        }
+
+        /* Estilo de la barra de navegación */
+        #nav {
+            background: #0d1217;
+            width: 61px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+        }
+
+        #nav ul li {
+            padding: 10px;
+            text-align: center;
+        }
+
+        #nav ul li a {
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            font-size: 1.5em;
+        }
+
+        #nav ul li a:hover {
+            color: white;
+        }
+
+        #nav ul li a.active {
+            color: #19B5FE;
+        }
+
+        /* Estilo de la sección principal */
+        #main {
+            flex-grow: 1;
+            background: #f1f1f1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Estilo del encabezado */
+        #header {
+            background: #e6e6e6;
+            padding: 1.15em 3.5em;
+            text-align: right;
+            flex-shrink: 0;
+        }
+
+        #header div {
+            margin-left: 250px; /* Alinea con la barra de navegación */
+        }
+
+        /* Contenedor de ambos cuadros */
+        .form-and-result-container {
+            display: flex;
+            justify-content: space-between; /* Espacio entre los cuadros */
+            padding: 20px;
+            gap: 20px; /* Ajusta la separación entre los cuadros aquí */
+        }
+
+        /* Estilo de la sección de entrenamiento */
+        .upload-box {
+            border: 2px dashed #ffffff;
+            background-color: #a7c6ffad;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .upload-box input[type="file"] {
+            display: none;
+        }
+
+        .upload-box label {
+            display: block;
+            cursor: pointer;
+            padding: 10px 20px;
+            background-color: #ffffff;
+            color: #a7c6ffad;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+
+        /* Botones de selección */
+        .option-buttons {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .option-button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .option-button {
+            padding: 10px 20px;
+            margin: 5px 0;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            background-color: #ffffff;
+            color: #000;
+        }
+
+        .option-button.selected {
+            background-color: #19B5FE;
+            color: #ffffff;
+        }
+
+        .option-title {
+            margin-top: 5px;
+            font-weight: bold;
+        }
+
+        /* Estilo del cuadro de resultado */
+        .result-box {
+            background-color: #ffffff; /* Fondo blanco */
+            border: 2px dashed #ffffff;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 1000px;
+        }
+    </style>
+    <script>
+        function displayFileName() {
+            const input = document.getElementById('image');
+            const fileNameDisplay = document.getElementById('file-name-display');
+            if (input.files.length > 0) {
+                fileNameDisplay.textContent = `Archivo seleccionado: ${input.files[0].name}`;
+            } else {
+                fileNameDisplay.textContent = '';
+            }
+        }
+
+        function setPrompt(promptText, button) {
+            const textInput = document.getElementById('text_input');
+            textInput.value = promptText;
+
+            // Update selected button style
+            const buttons = document.querySelectorAll('.option-button');
+            buttons.forEach(btn => btn.classList.remove('selected'));
+            button.classList.add('selected');
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('.option-button');
+            buttons.forEach(button => {
+                button.addEventListener('click', function() {
+                    setPrompt(button.dataset.prompt, button);
+                });
+            });
+        });
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === '1') {
+                document.querySelector('.option-button[data-prompt="Describe to me, generally, what is in the document"]').click();
+            } else if (event.key === '2') {
+                document.querySelector('.option-button[data-prompt="Read me the whole document"]').click();
+            } else if (event.key === '3') {
+                document.querySelector('.option-button[data-prompt="Read me the whole table"]').click();
+            }
+        });
+    </script>
+</head>
+
+<body>
+<div class="page-wrap">
+
+    <!-- Nav -->
+    <nav id="nav">
+        <ul>
+            <li><a href="{{ url_for('index') }}" class="active"><span class="icon fa-home"></span></a></li>
+            <li><a href="{{ url_for('paligemma') }}"><span class="icon fa-cube"></span></a></li>
+            <li><a href="{{ url_for('paligemmacamara') }}"><span class="icon fa-camera-retro"></span></a></li>
+            <li><a href="{{ url_for('descripcionnumeros') }}" class="active"><span class="icon fa-file-text-o"></span></a></li>
+        </ul>
+    </nav>
+
+    <!-- Main -->
+    <section id="main">
+
+        <!-- Header -->
+        <header id="header">
+            <div>UNL <span>🖐️</span></div>
+        </header>
+
+        <!-- Sección de entrenamiento -->
+        <section class="form-and-result-container">
+            <div class="upload-box">
+                <h1 style="color: #fff; font-weight: bold;">Coloca lo que quieres observar del documento:</h1>
+                <div class="option-buttons">
+                    <div class="option-button-container">
+                        <button type="button" class="option-button" data-prompt="Describe to me, generally, what is in the document">1</button>
+                        <div class="option-title">Identificación del Documento</div>
+                    </div>
+                    <div class="option-button-container">
+                        <button type="button" class="option-button" data-prompt="Read me the whole document">2</button>
+                        <div class="option-title">Lectura de Texto</div>
+                    </div>
+                    <div class="option-button-container">
+                        <button type="button" class="option-button" data-prompt="Read me the whole table">3</button>
+                        <div class="option-title">Lectura de Tablas</div>
+                    </div>
+                </div>
+                <form id="upload-form" action="/descripcionnumeros" method="post" enctype="multipart/form-data">
+                    <input type="text" id="text_input" name="text_input" placeholder="Seleccione una opción usando 1, 2 o 3" style="color: #000000; background-color: #ffffff; border: 1px solid #a7c6ffad; padding: 10px; width: 100%;" required readonly>
+                    <label for="image">Elegir Archivos</label>
+                    <input type="file" id="image" name="image" accept="image/*" onchange="displayFileName()" required>
+                    <p id="file-name-display"></p>
+                    <button type="submit">Procesar Modelo</button>
+                </form>
+            </div>
+
+            <div class="result-box">
+                <p id="result-text">{% if result %}{{ result }}{% else %}El resultado aparecerá aquí.{% endif %}</p>
+            </div>
+        </section>
+
+    </section>
+</div>
+
+</body>
+</html>

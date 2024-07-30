@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html lang="es">
+<head>
+    <title>Incio🤖</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/main.css') }}">
+</head>
+<body>
+<div class="page-wrap">
+    <!-- Nav -->
+    <nav id="nav">
+        <ul>
+            <li><a href="{{ url_for('index') }}" class="active"><span class="icon fa-home"></span></a></li>
+            <li><a href="{{ url_for('paligemma') }}"><span class="icon fa-cube"></span></a></li>
+            <li><a href="{{ url_for('paligemmacamara') }}"><span class="icon fa-camera-retro"></span></a></li>
+            <li><a href="{{ url_for('descripcionnumeros') }}"><span class="icon fa-file-text-o"></span></a></li>
+        </ul>
+    </nav>
+
+    <!-- Main -->
+    <section id="main">
+        <!-- Banner -->
+        <section id="banner">
+            <div class="inner">
+                <!-- <img src="{{ url_for('static', filename='images/LogoManjilu.png') }}" alt="Manjilu"> -->
+                <h1>Universidad Nacional de Loja</h1>
+                <p>Proyecto E-Reader</p>
+                <ul class="actions">
+                    <li><a href="{{ url_for('paligemma') }}" class="button alt scrolly big">Continuar</a></li>
+                </ul>
+            </div>
+        </section>
+    
+        <section id="contact">
+            <!-- Social -->
+            <div class="social column">
+                <h3>¿Quiénes Somos?</h3>
+                <p>Somos un grupo de estudiantes de la Universidad Nacional de Loja (UNL) de la Facultad de la Energía, 
+                    las Industrias y los Recursos Naturales No Renovables. Estamos comprometidos en facilitar el acceso a la información 
+                    para la comunidad con discapacidad visual. A través de este proyecto, trabajamos para desarrollar herramientas que 
+                    permiten una lectura accesible de documentos, mejorando así la inclusión digital y la autonomía de las personas con 
+                    discapacidad visual.</p>
+                    
+                <h3>Compartir</h3>
+                <ul class="icons">
+                    <li><a href="https://x.com/UNLoficial" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+                    <li><a href="https://www.facebook.com/UNLoficial/" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+                    <li><a href="https://www.instagram.com/unloficial/" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+                </ul>
+                
+            </div>
+
+            
+            <div class="column">
+                <h3>Ofrecemos</h3>
+                <p>Presentamos una solución para la comunidad con discapacidad visual, que facilita la lectura de documentos 
+                    de manera accesible. Utilizando el modelo Paligemma de forma local en los servidores de la UNL, nuestra herramienta 
+                    permite convertir texto a un formato accesible, ayudando a las personas con discapacidad visual a acceder a la información 
+                    de manera independiente y eficiente.</p>
+            </div>
+        </section>
+    </section>
+</div>
+
+
+<!-- Scripts -->
+<script src="{{ url_for('static', filename='assets/js/jquery.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/js/jquery.poptrox.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/js/jquery.scrolly.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/js/skel.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/js/util.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/js/main.js') }}"></script>
+</body>
+</html>

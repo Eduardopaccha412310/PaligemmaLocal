@@ -1,0 +1,55 @@
+.contenedor-padre {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    height: 100%; /* Asume que quieres que sea todo el alto disponible */
+}
+.cuadro-plomo {
+    width: 50%;
+    height: 395px;
+    background-color: #505050;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.boton-centrado {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    margin-top: 20px; /* Mueve el botón un poco más abajo */
+}
+.formulario-horizontal {
+    display: flex;
+    align-items: center; /* Centrar verticalmente los elementos */
+    gap: 10px; /* Espacio entre los elementos */
+}
+.formulario-horizontal input[type="text"],
+.formulario-horizontal select {
+    margin-right: 10px; /* Espacio a la derecha de cada campo */
+}
+
+.contenedor-padre {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    height: 100%; /* Asume que quieres que sea todo el alto disponible */
+}
+.cuadro-plomo {
+    width: 700px;
+    height: 395px;
+    background-color: #1d1d1d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px; /* Espacio entre el cuadro y los botones */
+}
+.contenedor-botones {
+    display: flex;
+    justify-content: center; /* Alinea los botones horizontalmente al centro */
+}
+.contenedor-botones > * {
+    margin-right: 10px; /* Espacio entre botones */
+    margin-bottom: 29px;
+}
+.contenedor-botones > *:last-child {
+    margin-right: 0; /* No deja espacio en el último botón */
+}
